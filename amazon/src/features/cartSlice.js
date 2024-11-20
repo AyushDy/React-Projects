@@ -73,7 +73,7 @@ const cartSlice = createSlice({
             (item) => item.product_id !== product.product_id
           );
         } else {
-          existingProduct.quantity -= quantity;
+          existingProduct.quantity -= 1;
         }
       }
 
