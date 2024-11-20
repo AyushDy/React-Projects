@@ -1,29 +1,29 @@
 import { sampleCard1Data1 } from "../constants";
 import Card1 from "../components/HomeCard1";
-import CategoryFilters from "../components/CategoryFilters";
 import ProductCard from "../components/ProductCard";
 import Carousel from "../components/caraousel";
-// import "./Home.css";
-import { useContext } from "react";
-import { ThemeContext } from "../App";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
-  console.log("Home", "Theme : ", theme);
+  // const { theme, setTheme } = useContext(ThemeContext);
+  // console.log("Home", "Theme : ", theme);
+
+  const location = useLocation();
+  const isHompage = location.pathname === "/";
 
   return (
     <div
       className="home-container flex-1 flex flex-col relative"
-      onClick={() => setTheme("dark")}
+      // onClick={() => setTheme("dark")}
     >
       <div className="home gap-4 p-4 w-full max-w-screen m-auto flex flex-col relative">
         <div className="w-full flex flex-wrap justify-between gap-4 mx-auto">
-          <Carousel/>
+          {isHompage &&  <Carousel/>}
           {sampleCard1Data1.map((card) => (
             <Card1 data={card} name={1} />
           ))}
         </div>
-        <div className=" z-20 products w-full flex bg-transparent flex-wrap-x overflow-auto justify-between gap-4 mx-auto">
+        <div className= "z-20 products w-full flex bg-transparent flex-wrap-x overflow-auto justify-between gap-4 mx-auto">
           {data.slice(0, 15).map((product) => (
             <ProductCard data={product} />
           ))}
@@ -33,7 +33,6 @@ const Home = () => {
   );
 };
 export default Home;
-
 //
 
 const data = [
@@ -586,3 +585,5 @@ const data = [
       "https://www.amazon.in/Acer-inches-Ready-Android-AR32AR2841HDFL/dp/B0B1YVCJ2Y/ref=sr_1_26?qid=1672909125&s=electronics&sr=1-26",
   },
 ];
+
+export {data};

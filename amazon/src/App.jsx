@@ -2,6 +2,7 @@ import Home from "./pages/Home.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import Cart from "./pages/Cart.jsx";
 import Layout from "./layout.jsx";
+import ProductDetail from "./pages/productDetails.jsx";
 
 import {
   BrowserRouter,
@@ -65,10 +66,9 @@ const App = () => {
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/cart" element={layout(<Cart />)} />
             <Route path="/search" element={layout(<Search />)} />
-            <Route path="/search/abc" element={layout(<Search />)} />
-            <Route path="/search/:searchId/:eview/:reviewId" element={layout(<Search />)} />
+            <Route path="/search/:query" element={layout(<Search />)} />
             <Route path="/product" element={layout(<>Product</>)} />
-            <Route path="/product/:productId" element={layout(<>Product Dynamic</>)} />
+            <Route path="/product/:productId" element={layout(<ProductDetail/>)} />
           </Routes>
         </BrowserRouter>
       </CartContext.Provider>

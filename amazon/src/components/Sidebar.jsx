@@ -12,7 +12,7 @@ const Sidebar = ({ open, onClose }) => {
       ></div>
       <div className="text-lg absolute top-0 left-0 z-50 w-[364px] h-full  bg-white flex flex-col overflow-y-auto ">
         <button className="min-h-min px-8 py-2 bg-[#222F3E] font-bold text-[19px] leading-[25px] flex gap-2 text-white">
-          <img src="" alt="Image" />
+          <div  className="h-4 w-4 user-avatar"></div>
           Hello, sign in
         </button>
         {sidebarData.map((data) => (

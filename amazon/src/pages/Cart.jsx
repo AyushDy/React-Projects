@@ -1,34 +1,64 @@
-import { useContext, useState } from "react";
-// import "./Cart.css";
-// import CartProduct from "./CartProduct";
-import { CartContext } from "../App";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import DropDownIcon from "../assets/vectors/chevron-down-dark.svg";
-import { changeCartSelection } from "../global/reusableFunctions";
+import {
+  addToCart,
+  removeFromCart,
+  toggleSelection,
+  resetCart,
+  selectAllItems,
+  deselectAllItems,
+} from "../features/cartSlice";
 
 const Cart = () => {
-  const {
-    cart: cartData,
-    size: cartSize,
-    updateCart,
-    subtotal,
-  } = useContext(CartContext);
   const [emiDetailsOpen, setEmiDetailsOpen] = useState(false);
-  const selectedItems = cartData.filter((item) => item.selected);
-  console.log();
+
+  const dispatch = useDispatch();
+  const { cart, cartSize, cartSubtotal } = useSelector((state) => state.cart);
+
+  const selectedItems = cart.filter((item) => item.selected);
+
+  const handleToggle = () => {
+    if (selectedItems.length === cart.length) {
+      cart.forEach((item) => dispatch(toggleSelection(item)));
+    } else {
+      cart.forEach((item) => {
+        if (!item.selected) dispatch(toggleSelection(item));
+      }); 
+    }
+  };
+
+  const suggestedProducts = cart.slice(0,8);
+  
   return (
     <div className="cart flex items-start p-3 bg-[#e9eded] h-full gap-6 overflow-auto">
       <div className="min-w-[642px] max-w-[1180px] products-list w-fit flex flex-col justify-center gap-3 p-4 bg-white">
         <div className="flex flex-col gap-1 justify-start items-start">
           <h2 className="text-[28px]">Shopping Cart</h2>
-          <span>
-            {selectedItems.length === 0 && "No items selected."}
-            <button className="text-sm text-[#007185] hover:text-[#C7501F] hover:underline">
-              {selectedItems.length === cartData.length ? "Deselect" : "Select"}{" "}
-              all items
-            </button>
-          </span>
-          <button onClick={() => updateCart([])} style={{ padding: "4px" }}>
+          {cart.length > 0 && (
+            <span>
+              {selectedItems.length === 0 && "No items selected."}
+              <button
+                className="text-sm text-[#007185] hover:text-[#C7501F] hover:underline"
+                onClick={() => {
+                  selectedItems.length === cart.length
+                    ? dispatch(deselectAllItems(cart))
+                    : dispatch(selectAllItems(cart));
+                }}
+              >
+                {selectedItems.length === cart.length
+                  ? "Deselect"
+                  : "Select"}{" "}
+                all items
+              </button>
+            </span>
+          )}
+
+          <button
+            onClick={() => dispatch(resetCart())}
+            style={{ padding: "4px" }}
+          >
             Empty Cart
           </button>
         </div>
@@ -36,27 +66,23 @@ const Cart = () => {
         <div className="h-px w-full border" />
 
         <div className="flex flex-col ">
-          {cartData.map((product) => (
-            <CartProduct
-              data={product}
-              cartData={cartData}
-              updateCart={updateCart}
-            />
+          {cart.map((product) => (
+            <CartProduct key={product.product_id} data={product} />
           ))}
         </div>
       </div>
 
-
+      {/*Sumaary section*/}
       <div className="min-w-[300px] w-[300px] text-[#0F1111] flex flex-col gap-6">
         <div className="w-full p-5 pb-6 bg-white rounded flex flex-col gap-5">
           <div className="is-free-delivery flex flex-col gap-1 ">
             <div className="w-full flex items-center gap-1">
               <div className="h-4 text-sm w-full rounded-md border border-[#067D62] bg-white overflow-hidden">
                 <div
-                  className={`h-4 text-sm min-w-0 w-[${(
-                    100 %
-                    ((subtotal / 499) * 100)
-                  ).toFixed(0)}%]  max-w-full bg-[#067D62]`}
+                  style={{
+                    width: `${Math.min((cartSubtotal / 499) * 100, 100)}%`,
+                  }}
+                  className="h-4 text-sm min-w-0 max-w-full bg-[#067D62]"
                 />
               </div>
               ₹499
@@ -79,9 +105,11 @@ const Cart = () => {
               </span>
             </div>
           </div>
+
+          {/* Cart Total */}
           <div className="text-lg cart-total flex flex-wrap">
             <span className="w-full flex flex-wrap">
-              Subtotal (8 items): <strong>₹{subtotal}</strong>
+              Subtotal ({cartSize} items): <strong>₹{cartSubtotal}</strong>
             </span>
             <div className="flex items-center gap-1 text-sm">
               <input type="checkbox" className="w-4 h-4" />
@@ -124,11 +152,9 @@ const Cart = () => {
           <span className="text-[18px] font-bold">
             Customers who bought items in your cart also bought
           </span>
-          {[...cartData, ...cartData, ...cartData]
-            .slice(0, 8)
-            .map((product) => (
-              <SuggestionCard data={product} />
-            ))}
+          {suggestedProducts.map((product) => (
+            <SuggestionCard key={product.product_id} data={product} />
+          ))}
         </div>
       </div>
     </div>
@@ -139,6 +165,7 @@ export default Cart;
 // Cart Product Component
 
 const CartProduct = ({ data, cartData, updateCart }) => {
+   const dispatch = useDispatch();
   const {
     product_name,
     img_link,
@@ -146,13 +173,13 @@ const CartProduct = ({ data, cartData, updateCart }) => {
     quantity,
     selected = false,
   } = data;
-  console.log(data, selected);
+
   return (
     <div className="cart-product flex gap-3 p-4 max-w-[1140px]">
       <input
         type="checkbox"
         checked={selected}
-        onChange={() => changeCartSelection(data, cartData, updateCart)}
+        onChange={() => dispatch(toggleSelection(data))}
       />
       <img src={img_link} className="max-w-[180px]" />
       <div className="details">

@@ -1,16 +1,19 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 // import "./Header.css";
 import AmazonLogo from "../assets/vectors/amazon-in.svg";
 import CartIcon from "../assets/vectors/cart-new.svg";
 import locationIcon from "../assets/vectors/location.svg";
-import { Link } from "react-router-dom";
-import { CartContext } from "../App";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 export default function Header() {
   console.log("Header");
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
-  const {size : cartSize}  = useContext( CartContext );
+  const cartSize  = useSelector((state)=>state.cart.cartSize)
 
   const filterOptions = [
     { label: "All", value: "all" },
@@ -27,6 +30,15 @@ export default function Header() {
   const optionMapper = ({ label, value }) => (
     <option value={value}>{label}</option>
   );
+
+  const handleSearch = () => {
+    if (query.trim()) {
+      console.log('navigated')
+      navigate(`/search/${query}`);
+    }
+  };
+
+
   return (
     <div className="flex gap-1 items-center px-4 py-1 bg-[#131921]">
       <Link to={"/"}>
@@ -67,9 +79,15 @@ export default function Header() {
           className="min-h-full p-2 border-none text-[#111] text-sm flex-1"
           type="search"
           placeholder="Search Amazon.in"
+          value={query}
+          onChange={(e)=> setQuery(e.target.value)}
         />
-        <button className="min-h-full py-2 px-4 border-none bg-[#febd68] text-black text-sm cursor-pointer">
-          O
+        <button 
+         type="button"
+         className="min-h-full py-2 px-4 border-none bg-[#febd68] text-black text-sm cursor-pointer"
+         onClick={handleSearch}
+        >
+          Go
         </button>
       </div>
 

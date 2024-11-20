@@ -1,7 +1,3 @@
-// const SignIn = () => {
-//   return <div>signin</div>;
-// };
-// export default SignIn;
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AmazonLogo from "../assets/vectors/amazon-in-dark.svg";
@@ -41,7 +37,7 @@ const SignIn = () => {
             </span>
             <form
               className="flex flex-col gap-1.5"
-              onSubmit={(e) => handleSubmit(e)}
+              onSubmit={(e) => handleSignIn(e)}
             >
               <span className="text-xs font-semibold">
                 Email or mobile phone number
@@ -127,7 +123,7 @@ const SignIn = () => {
           <span>Help</span>
         </div>
         <span className="text-gray-800 scale-90">
-          © 1996-2024, Amazon.Eshank.Biz, Inc. or its affiliates
+          © 1996-2024, Amazon.In, Inc. or its affiliates
         </span>
       </div>
     </div>

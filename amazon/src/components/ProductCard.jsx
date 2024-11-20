@@ -1,35 +1,52 @@
-import { useContext, useState } from "react";
-import { addToCart, removeFromCart } from "../global/reusableFunctions";
-import { CartContext } from "../App";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../features/cartSlice";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
-  console.log("ProductCard");
-  const { cart, updateCart } = useContext(CartContext);
+
+  const dispatch = useDispatch();
+
+  const cart = useSelector((state)=>state.cart.cart)
   const product = cart.find((item) => item.product_id === data.product_id);
   const countInCart = product ? product.quantity : 0;
   const buttonStyleClass =
     "bg-[#f0c14b] border border-[#a88734] border-t-[#9c7e31] border-b-[#846a29] text-[#111] p-1.5 rounded-lg cursor-pointer flex-1";
-  console.log("ProductCard", data.product_id, countInCart, cart, updateCart);
+
   return (
     <div className="flex flex-col gap-2 p-2 border-2 border-[#f0f2f2] rounded-lg">
-      <img
-        className="h-[200px] w-fit max-w-[400px] object-cover"
-        src={data.img_link}
-        alt={data.product_name}
-      />
-
+      <Link to={`/product/${data.product_id}`} className="flex flex-col">
+        <img
+          className="h-[200px] w-fit max-w-[400px] object-cover"
+          src={data.img_link}
+          alt={data.product_name}
+        />
+        <p
+          className="text-center mt-2 font-semibold truncate"
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+           {data.product_name.length > 25 ? data.product_name.substring(0, 25) + "..." : data.product_name}
+        </p>
+      </Link>
       <div className="flex gap-2">
         {countInCart ? (
           <>
             <button
               className={buttonStyleClass}
-              onClick={() => addToCart(data, cart, updateCart)}
+              onClick={() => dispatch(addToCart(data))}
             >
               +
             </button>
             <button
               className={buttonStyleClass}
-              onClick={() => removeFromCart(data, cart, updateCart)}
+              onClick={() => 
+                countInCart > 1 
+                ? dispatch(removeFromCart({product:data, quantity: countInCart-1}))
+                : dispatch(removeFromCart({product:data}))
+              }
             >
               -
             </button>
@@ -37,7 +54,7 @@ const ProductCard = ({ data }) => {
         ) : (
           <button
             className={buttonStyleClass}
-            onClick={() => addToCart(data, cart, updateCart)}
+            onClick={() => dispatch(addToCart(data))}
           >
             Add To Cart
           </button>

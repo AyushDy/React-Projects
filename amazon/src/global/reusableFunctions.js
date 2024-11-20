@@ -46,3 +46,14 @@ export function changeCartSelection(product, currentCart, updateCart) {
     )
   );
 }
+
+
+export function selectAllItems(currentCart, updateCart) {
+  const updatedCart = currentCart.map((item) => ({ ...item, selected: true }));
+  updateCart(updatedCart);
+}
+
+export function deselectAllItems(currentCart, updateCart) {
+  const updatedCart = currentCart.map((item) => ({ ...item, selected: false }));
+  updateCart(updatedCart);
+}
