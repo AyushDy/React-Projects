@@ -191,7 +191,7 @@ const CartProduct = ({ data, cartData, updateCart }) => {
         </div>
         <div className="controls flex items-center gap-2">
         <button
-            className="w-8 h-8 bg-[#f0f0f0] text-black rounded-full flex justify-center items-center hover:bg-[#e0e0e0]"
+            className="w-8 h-8 bg-[#f0f0f0] text-black rounded-md flex justify-center items-center hover:bg-[#e0e0e0]"
             onClick={() =>
               quantity > 1
                 ? dispatch(removeFromCart({ product: data, quantity: 1 }))
@@ -202,7 +202,7 @@ const CartProduct = ({ data, cartData, updateCart }) => {
           </button>
           <span className="text-sm font-bold">{quantity}</span>
           <button
-            className="w-8 h-8 bg-[#f0f0f0] text-black rounded-full flex justify-center items-center hover:bg-[#e0e0e0]"
+            className="w-8 h-8 bg-[#f0f0f0] text-black rounded-md flex justify-center items-center hover:bg-[#e0e0e0]"
             onClick={() => dispatch(addToCart(data))}
           >
             +
