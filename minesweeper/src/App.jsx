@@ -1,5 +1,5 @@
 import './App.css'
-import Board from './components/board'
+import Board from './components/Board'
 import MyContextProvider from './contexts/GameContext'
 
 function App() {
