@@ -4,411 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
 
-    <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-
-
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body{
-            /* background-color: #F2F2F2; */
-            background:linear-gradient(90deg, #FEF5E5 40%, #e5e6fe 90%,#FEF5E5 100%);
-        }
-        .navbar{
-            background-color: #172937;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        button{
-            cursor: pointer;
-        }
-
-        .navbar a:first-child{
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-            margin-right: auto;
-        }
-
-        .navbar a{
-            color: #fff;
-            font-size: 20px;
-            text-decoration: none;
-            font-weight: 400;
-            margin: 25px 34px;
-
-        }
-
-        .navbar a:last-child{
-            border: 1px solid #F37021;
-            border-radius: 8px;
-            color: #F2F2F2;
-            padding: 4px 32px;
-            margin-right: 40px;
-            font-weight: 500;
-        }
-
-        .navbar a:hover{
-            color: #F37021;
-        }
-
-        .navbar a:last-child:hover{
-            background-color: #F37021;
-            color: #fff;
-        }
-
-        
-        .navbar img{
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 1px solid;
-        }
-
-        .about-container{
-            display: flex;
-            justify-content: space-between;
-            background-color: #172937;
-            height: 77vh;
-        }
-
-        .about{
-            color: #fff;
-            padding: 50px 100px;
-            width: 80%;
-            /* border: 1px solid #F37021; */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .about h1{
-            font-size: 40px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .about h2{
-            font-size: 30px;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .about p{
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
-
-        .about-image-container{
-            margin: 0 auto;
-            /* border: 1px solid #F37021; */
-            width: 40%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 40px;
-            margin-bottom: 50px;
-        }
-
-        .image-container{
-            border-radius: 50%;
-            width: 330px;
-            height: 330px;
-            overflow: hidden;
-        }
-
-        .about-image-container img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .about-image-container img:hover{
-            transform: scale(1.1);
-        }
-
-        .about-image-container img{
-            transition: transform 0.3s;
-        }
-
-        .about p{
-            color: #F2F2F2CC;
-            font-size: 23px;
-            font-weight: 400px;
-            line-height: 1.7;
-            padding: 10px 0;
-            margin-top: 25px;
-            width: 590px;
-        }
-
-        .about h2 span{
-            color: #F37021;
-        }
-
-        .about h1{
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.2;
-            padding: 10px 0;
-            width: 573px;
-        }
-
-        .my-skills{
-            /* background-color: #F2F2F2; */
-            /* background:linear-gradient(90deg, #172937 0%, #0F2027 100%); */
-            padding: 50px 80px;
-            margin-bottom: 50px;
-        }
-
-        .my-skills-container{
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        #skills-head-1{
-            font-size: 43px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        #skills-head-1 span{
-            color: #F37021;
-        }
-
-        #skills-head-2{
-            font-size: 28px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            text-align: center;
-            margin: 10px 0 50px 0;
-        }
-
-        .skills-container{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-            padding: 30px 10px;
-            height: 300px;
-            background-color: #FDFDFD;
-            border-radius: 20px;
-        }
-
-        .skill{
-            font-size: 20px;
-            font-weight: 400;
-            border: 1.6px solid #F37021;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            padding: 8px 16px;
-            margin: 15px 10px;
-        }
-
-        .skill img{
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
-
-        .skill p{
-            font-size: 20px;
-            font-weight: 400;
-        }
-
-        .video-progress{
-            padding: 50px 80px;
-            /* background-color: #172937; */
-            /* color: #fff; */
-        }   
-
-        #video-head-1{
-            font-size: 43px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        #video-head-1 span{
-            color: #F37021;
-        }
-
-        #video-head-2{
-            font-size: 28px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            text-align: center;
-            margin: 10px 0 80px 0;
-
-        }
-
-        .video-progress button{
-            background-color: #F37021;
-            color: #fff;
-            padding: 15px 65px;
-            border: none;
-            border-radius: 10px;
-            font-size: 25px;
-            font-weight: 500;
-            margin: 0 auto;
-            display: block;
-            margin-bottom: 65px;
-        }
-
-        .videos-container{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            /* background-color:#F2F2F2 ; */
-        }
-
-        .video-card{
-            width: 430px;
-            height: 370px;
-            background-color: #FDFDFD;
-            border-radius: 20px;
-            box-shadow: 0 8px 8px -5px rgba(0, 0, 0, 0.3);
-            margin: 0 15px;
-        }
-
-        .video{
-            width: 100%;
-            height: 230px;
-            border-top-left-radius:20px ;
-            border-top-right-radius: 20px;
-            background-color: #C4C4C4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video p{
-            margin: 0 auto;
-            font-size: 20px;
-            font-weight: 400;
-            color: #F37021;
-        }
-
-        .about-video{
-            padding: 10px 30px;
-            height: 200px;
-        }
-
-        .about-video p{
-            font-size: 18px;
-            font-weight: 500;
-            color: #000000B0;
-        }
-
-        .about-video h2{
-            font-size: 26px;
-            font-weight: 600;
-            color: #000000D9;
-            margin: 7px 0;
-        }
-
-        .projects-section{
-            padding: 50px 80px;
-        }
-
-        #projects-head-1{
-            font-size: 43px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        #projects-head-2{
-            font-size: 28px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            text-align: center;
-            margin: 10px 0 65px 0;
-        }
-
-        .projects-container{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-bottom: 30px;
-        }
-
-        .project-card{
-            width: 430px;
-            height: 520px;
-            background-color: #FDFDFD;
-            border-radius: 20px;
-            box-shadow: 0 8px 8px -5px rgba(0, 0, 0, 0.3);
-            margin: 0 15px;
-            border-bottom:30px ;
-        }
-
-        .project-card img{
-            width: 100%;
-            height: 245px;
-            border-top-left-radius:20px ;
-            border-top-right-radius: 20px;
-            object-fit: cover;
-        }
-
-        .about-project{
-            padding: 10px 30px;
-            height: 200px;
-        } 
-
-        .about-project h2{
-            font-size: 25px;
-            font-weight: 700;
-            color: #F37021;
-            margin: 7px 0;
-        }
-
-        .about-project p{
-            font-size: 16px;
-            font-weight: 400;
-            color: #000000;
-        }
-
-        .about-project .about-head{
-            font-size: 20px;
-            font-weight: 500;
-            color: #000000B0;
-            margin: 7px 0;
-        }
-
-        .about-project .project-desc{
-            font-size: 18px;
-            font-weight: 400;
-            color: #000000B0;
-            margin: 7px 0;
-        }
-
-
-
-
-
-
-
-        
-        
-      
-
-    </style>
+  
 </head>
 <body>
     <section class="navbar">
@@ -612,7 +210,77 @@
     </section>
 
     <section class="education-section">
-        
+        <h1 class="education-head-1">
+            Education
+        </h1>
+        <p class="education-head-2">
+            My education has been a journey of self-discovery and growth.<br>Here are some details.
+        </p>
+        <div class="education-card-container">
+            <div class="education-card">
+
+                <div class="education-content">
+                    <h2>Explorin Academy</h2>
+                    <p class="year">2023-2024</p>
+                    <p>BTech | Computer Science</p>
+                </div>
+                <img src="https://placehold.co/600x400" alt="">
+            </div>
+
+            <div class="education-card">
+                <div class="education-content">
+                    <h2>College Name</h2>
+                    <p class="year">2023-2024</p>
+                    <p>BTech | Computer Science</p>
+                </div>
+                <img src="https://placehold.co/600x400" alt="">
+            </div>
+
+            <div class="education-card">
+                <div class="education-content">
+                    <h2>School Name</h2>
+                    <p class="year">2023-2024</p>
+                    <p>12th</p>
+                </div>
+                <img src="https://placehold.co/600x400" alt="">
+            </div>
+
+            <div class="education-card">
+                <div class="education-content">
+                    <h2>School Name</h2>
+                    <p class="year">2023-2024</p>
+                    <p>10th</p>
+                </div>
+                <img src="https://placehold.co/600x400" alt="">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h1 class="contact-head-1">
+            Contact
+        </h1>
+        <p class="contact-head-2">
+            Feel free to reach out to me for any questions or opportunities!
+        </p>
+        <div class="contacts-container">
+            <div class="contact">
+                <img src="./assets/linkedin.svg" alt="">
+                <p>LinkedIn</p>
+            </div>
+
+            <div class="contact">
+                <img src="./assets/gmail.svg" alt="">
+                <p>ayushdubey@gmail.com</p>
+            </div>  
+
+            <div class="contact">
+                <img src="./assets/github.svg" alt="">
+                <p>Github</p>
+            </div>
+
+        </div>
     </section>
 </body>
 </html>
