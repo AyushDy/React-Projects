@@ -90,6 +90,15 @@ const MycontextProvider = ({ children }) => {
 
     const handleRightClick = (e, row, col) => {
         e.preventDefault();
+
+        if(gameStatus === 'none'){
+            setGameStatus('running');
+        }
+
+        if(gameStatus === 'won' || gameStatus === 'lost'){
+            return;
+        }
+
         if(board[row][col].isReveal){
             return;
         }

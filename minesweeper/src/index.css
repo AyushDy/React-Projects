@@ -102,3 +102,41 @@ body{
 }
 
 
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        padding-top: 20%;
+    }
+
+    .cell {
+        max-width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+    }
+
+    .board {
+        grid-template-columns: repeat(10, 35px);
+        grid-template-rows: repeat(10, 35px);
+    }
+
+    .board-header {
+        margin-top: 10%;
+        max-width: 100%;
+        gap: 10px;
+    }
+
+    .timer, .mine-count {
+        padding: 3px 10px;
+        font-size: 0.9rem;
+    }
+
+    .game-status {
+        width: 40%;
+        font-size: 0.9rem;
+    }
+
+    .restart {
+        padding: 3px 10px;
+        font-size: 0.9rem;
+    }
+}
