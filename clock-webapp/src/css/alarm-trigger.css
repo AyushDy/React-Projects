@@ -1,0 +1,39 @@
+.alarm-triggered {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+    /* box-shadow: 0 0 10px #ff0000; */
+}
+
+.alarm-triggered p{
+    width: max-content;
+    background-color:#88C070;
+    margin: 0 auto;
+    color: #0F1A0F;
+    padding: 0 20px;
+    /* animation: alarm-triggered-animation 1s infinite; */
+}
+
+@keyframes alarm-triggered-animation {
+    0% {
+        background-color: #88C070;
+        color: #0F1A0F;
+    }
+    50% {
+        background-color:  #0F1A0F;
+        color: #88C070;
+    }
+    100% {
+        background-color: #88C070;
+        color: #0F1A0F;
+    }
+}
+
+.triggered{
+    animation: alarm-triggered-animation 1s infinite;
+}
+
