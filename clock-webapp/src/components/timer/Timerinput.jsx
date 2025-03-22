@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTimer,start } from "../../features/timer/timerSlice";
+import { useDispatch } from "react-redux";
+import { start } from "../../features/timer/timerSlice";
 
 const Timerinput = () => {
     const dispatch = useDispatch();
@@ -38,6 +38,7 @@ const Timerinput = () => {
         <div className="">
             <button 
                className="timer-start-button"
+               disabled = {input.hours === 0 && input.minutes === 0 && input.seconds === 0}
                 onClick={handleStart}
                 >Start
             </button>

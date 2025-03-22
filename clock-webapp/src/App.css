@@ -443,7 +443,7 @@ body {
   justify-content: center;
   gap: 2rem;
 }
-.stopwatch-button {
+.stopwatch-button ,.timer-buttons{
   background: #202820;
   border: 3px solid var(--pixel-border);
   color: var(--crt-green);
@@ -451,7 +451,12 @@ body {
   cursor: pointer;
   transition: all 0.15s ease-out;
 }
-.stopwatch-button:hover {
+
+.stopwatch-button{
+  margin: 0 auto;
+}
+
+.stopwatch-button:hover, .timer-buttons:hover {
   background-color: var(--crt-green);
   color: #202820;
 }
@@ -525,10 +530,30 @@ button {
 .timer-display{
   width: 30%;
   padding: 30px;
+  z-index: 1;
   margin: 20px auto;
   font-size: 40px;
   font-weight: bold;
   letter-spacing: 2px;
   text-align: center;
   border: 3px dashed var(--crt-green);
+}
+
+.timer-display-container{
+  /* pointer-events: none; */
+  display:flex ;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container{
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+} 
+
+.timer-buttons{
+  margin: 0 10%;
 }

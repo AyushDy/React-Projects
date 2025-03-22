@@ -19,7 +19,7 @@ function App() {
     let interval = setInterval(()=>{
 
       const activeAlarms = alarms.filter(alarm=>alarm.isActive);
-
+      // console.log('active alarms', activeAlarms);
         activeAlarms.forEach(alarm=>{
           const match = isTimeMatch(alarm.time);
 
@@ -27,6 +27,7 @@ function App() {
             dispatch(triggerUnMute(alarm.id));
           }
           else if(!alarm.isTriggered && !alarm.isMuted && match){
+            console.log('triggering alarm', alarm);
             dispatch(triggerAlarm(alarm.id));
           }
           else if(alarm.isTriggered && !match){
@@ -52,6 +53,9 @@ function App() {
 
 function isTimeMatch(alarmTime, current= new Date().toLocaleTimeString().split(':')){
   const alarm= alarmTime.split(':');
+  const meridian = current[2].split(' ')[1];
+  if(meridian === 'PM' && current[0] !== '12') current[0] = String(Number(current[0]) + 12);
+  if(meridian === 'AM' && current[0] === '12') current[0] = '00';
   return Number(alarm[0]) === Number(current[0]) && Number(alarm[1]) === Number(current[1]);
 }
 

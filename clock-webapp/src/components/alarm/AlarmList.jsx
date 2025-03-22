@@ -44,7 +44,7 @@ const AlarmListItem = ({alarm}) => {
     }
 
     const time = formatTo12Hour(alarm.time);
-
+    console.log('rendering list item', alarm);
     return (
         <li 
            className={`list-item ${alarm.isTriggered && !alarm.isMuted && alarm.isActive ? 'triggered' : ''}`} 
@@ -54,8 +54,8 @@ const AlarmListItem = ({alarm}) => {
             <div 
                 className={`enable-disable-button ${alarm.isActive ? 'enabled' : 'disabled'}`}
                 onClick={handleToggle} 
-               >
-                    <span className='slider'></span>
+                >
+                   <span className='slider'></span>
             </div>
         </li>
     )

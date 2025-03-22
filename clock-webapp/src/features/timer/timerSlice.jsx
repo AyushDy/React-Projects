@@ -27,13 +27,13 @@ const timerSlice = createSlice({
             }
         },
         pause(state){
-            if(state.isActive){
+            if(state.isActive && state.isRunning){
                 state.elapsedTime += Date.now() - state.startTime;
                 state.isActive = false;
             }
         },
         resume(state){
-            if(!state.isActive){
+            if(!state.isActive && state.isRunning){
                 state.startTime = Date.now();
                 state.isActive = true;
             }
@@ -46,6 +46,8 @@ const timerSlice = createSlice({
             state.elapsedTime = 0;
             state.isActive = false;
             state.isTimerCompleted = false;
+            state.isRunning = false;
+            console.log('reset',state);
         }
     }
 })
@@ -54,6 +56,6 @@ export const selectTimer = state => {
     return state.timer;
 };
 
-export const {start, initialise, pause,resume, complete, reset} = timerSlice.actions;
+export const {start, pause,resume, complete, reset} = timerSlice.actions;
 
 export default timerSlice.reducer;
