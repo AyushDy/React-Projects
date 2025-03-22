@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        body{
+            display: flex;
+            background: linear-gradient(90deg, #cbe0ff, #F1F1F1);
+        }
+
+        aside{
+            width: 35%;
+            height: 100vh;
+            /* border:1px solid #333; */
+        }
+        main{
+            width: 65%;
+            height: 100vh;
+            /* background-color: #f1f1f1; */
+            float: left;
+        }
+
+        .sec-a{
+            height: 70%;
+            width: 100%;
+            /* background-color: #f1f1f1; */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sec-a-header{
+            /* border:1px solid red ; */
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 1em 0 1em;
+            margin-top:40px ;
+        }
+
+        .sec-a-container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            
+            /* border: 1px solid blue; */
+        }
+
+        .box-fix{
+            width: 350px;
+            background-color: white;
+            margin: 15px;
+            margin-left: 30px;
+            border-radius: 8px;
+        }
+
+        .sec-a-flex-container{
+            width: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .sec-a-flex-item{
+            width: 45%;
+            background-color: white;
+            margin: 15px;
+            border-radius: 8px;
+        }
+
+        .sec-a-h{
+            font-size: 20px;
+            font-weight: 600;
+            margin-left:1.5% ;
+        }
+
+        .sec-a-h-p{
+            font-size: 16px;
+            font-weight: 400;
+            color: #8F95A1;
+        }
+
+        .sec-a-h-down{
+            font-size: 20px;
+            font-weight: 600;
+            transform: rotate(90deg);
+            color: #8F95A1;
+        }
+
+        .sec-a-mid-p span{
+            margin: 0 0.5em 0 0.5em        
+        }
+
+        .sec-a-header span, .sec-a-mid-p{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .sec-a-mid-p .a {
+            border-bottom: 2px solid #8F95A1;
+        }
+
+        .b{
+            margin-left: 1em;
+        }
+
+        .rewards{
+            width: 100%;
+            height:30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 8px;
+            align-items: center;
+            /* margin: 20px; */
+        }
+
+        .rewards-header{
+            font-size: 20px;
+            font-weight: 600;
+            align-self: flex-start;
+            margin-bottom: 1em;
+            margin-left: 30px;
+        }
+
+        .rewards-container{
+            border-radius: 8px;
+            width: 95%;
+            display: flex;
+            background-color: white;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 1%;
+            height: 60%;
+            padding: 0 30px;
+        }
+
+        .rewards-item{
+            width: 20%;
+            height: 100px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .rewards-item-header{
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .rewards-item-p{
+            font-size: 14px;
+            font-weight: 400;
+            width: 100%;
+            background-color: #F8F8F8;
+            border: 2px solid #edebeb;
+            border-radius: 8px;
+            color: #8F95A1;
+            padding: 10px 20px;
+        }
+
+        .sec-b{
+            width: 100%;
+            height: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sec-b-header{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 1em 0 1em;
+            margin-top:40px ;
+        }
+
+        .sec-b-container{
+            width: 95%;
+            height: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 0 30px;
+        }   
+
+
+        .sec-b-list-container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .-sec-b-list-a{
+            width: 45%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sec-b-list-item{
+            width: 100%;
+            height: 100px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .sec-b-inner-box{
+            width: 40%;
+            background-color: #F8F8F8;
+            border: 2px solid #edebeb;
+            border-radius: 8px;
+            color: #8F95A1;
+            padding: 10px 20px;
+        }
+
+        .drop{
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .-sec-b-list-b{
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sec-b-list-b-head{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #F8F8F8;
+            border-radius: 8px;
+            margin: 15px 0;
+            padding: 10px 30px;
+        }
+
+        .sec-b-list-b-item{
+            width: 100%;
+            height: 100px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .sec-b-list-b-item p{
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .sec-b-list-b-item span{
+            font-size: 14px;
+            font-weight: 400;
+            width: 100%;
+            background-color: #F8F8F8;
+            border: 2px solid #edebeb;
+            border-radius: 8px;
+            color: #8F95A1;
+            padding: 10px 20px;
+        }
+
+
+
+
+
+
+        
+
+    </style>
+</head>
+<body>
+    <main>
+        <section class="sec-a">
+            <div class="sec-a-header">
+                <span class="sec-a-h">Staking offerings</span>
+                <div class="sec-a-mid-p">
+                    <span class="sec-a-h-p a">Locked Staking <hr></span>
+                    <span class="sec-a-h-p b">Defi Staking</span>
+                </div>
+                <span class="sec-a-h-p">Active <span class="sec-a-h-down">&gt;</span></span>
+            </div>
+            <div class="sec-a-container">
+                <div class="box-fix">
+
+                </div>
+                <div class="sec-a-flex-container">
+                    <div class="sec-a-flex-item"></div>
+                    <div class="sec-a-flex-item"></div>
+                    <div class="sec-a-flex-item"></div>
+                    <div class="sec-a-flex-item"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rewards">
+            <h1 class="rewards-header">Rewards Query</h1>
+            <div class="rewards-container">
+
+                <div class="rewards-item">
+                    <h3 class="rewards-item-header">Staked Assets</h3>
+                    <p class="rewards-item-p">Ontology</p>
+                </div>
+                <div class="rewards-item">
+                    <h3 class="rewards-item-header">Stake Amount</h3>
+                    <p class="rewards-item-p">300025.45 ONT</p>
+                </div>
+                <div class="rewards-item">
+                    <h3 class="rewards-item-header">Stake Period</h3>
+                    <p class="rewards-item-p">6 Month</p>
+                </div>
+                <div class="rewards-item">
+                    <h3 class="rewards-item-header">Estimated Rewards</h3>
+                    <p class="rewards-item-p">400025015</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="sec-b">
+            <div class="sec-b-header">
+                <h2>Staking Activation</h2>
+                <p>Locked <span>&gt;</span></p>
+            </div>
+            <div class="sec-b-container">
+                <div class="sec-b-list-container">
+                    <div class="-sec-b-list-a">
+                        <div class="sec-b-list-item">
+                            <p>Select Asset</p>
+                             <p class="sec-b-inner-box"><span class="drop">Ontology</span></p>
+                        </div>
+                        <div class="sec-b-list-item">
+                            <p>Select Asset</p>
+                             <p class="sec-b-inner-box"><span class="drop">Ontology</span></p>
+                        </div>
+                        <div class="sec-b-list-item">
+                            <p>Select Asset</p>
+                             <p class="sec-b-inner-box"><span class="drop">Ontology</span></p>
+                        </div>
+                        <div class="sec-b-list-item">
+                            <p>Select Asset</p>
+                             <p class="sec-b-inner-box"><span class="drop">Ontology</span></p>
+                        </div>
+                        <div class="sec-b-list-item">
+                            <p>Select Asset</p>
+                             <p class="sec-b-inner-box"><span class="drop">Ontology</span></p>
+                        </div>
+                    </div>
+                    <div class="-sec-b-list-b">
+                        <div class="sec-b-list-b-head">
+                            <h2>Summary</h2>
+                        </div>
+
+                        <div class="sec-b-list-b-item">
+                            <p>Stake Date</p>
+                            2024-02-15 05:32
+                        </div>
+
+                        <div class="sec-b-list-b-item">
+                            <p>Stake Date</p>
+                            2024-02-15 05:32
+                        </div>
+                        <div class="sec-b-list-b-item">
+                            <p>Stake Date</p>
+                            2024-02-15 05:32
+                        </div>
+                        <div class="sec-b-list-b-item">
+                            <p>Stake Date</p>
+                            2024-02-15 05:32
+                        </div>
+                        <div class="sec-b-list-b-item">
+                            <p>Stake Date</p>
+                            2024-02-15 05:32
+                        </div>
+
+                </div>
+
+                
+            </div>
+        </section>
+    </main>
+    <aside>
+
+    </aside>
+</body>
+</html>
