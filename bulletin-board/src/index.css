@@ -1,0 +1,202 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main Layout */
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h2 {
+  font-size: 2rem;
+  color: #444;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Post List */
+.post {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post h3 {
+  font-size: 1.5rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.post p {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.post .postCredit {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+.post .excerpt {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Reaction Buttons */
+.reaction-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reaction-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Add Post Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+form label {
+  font-size: 1rem;
+  color: #444;
+}
+
+form input,
+form select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+form button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Loader */
+.loader {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Error Message */
+.error {
+  color: red;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Header Styles */
+.Header {
+  background-color: #007bff; /* Primary blue color */
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+}
+
+.Header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.Header nav ul li {
+  font-size: 1rem;
+}
+
+.Header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.Header nav ul li a:hover {
+  color: #ffdd57; /* Highlight color on hover */
+}
+
+@media (max-width: 768px) {
+  .Header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .Header nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
