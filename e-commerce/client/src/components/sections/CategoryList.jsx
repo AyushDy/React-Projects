@@ -1,5 +1,6 @@
 import React from 'react'
 import { categories } from '../../assets/data/data'
+import { Link } from 'react-router-dom'
 
 const CategoryList = () => {
   
@@ -17,8 +18,9 @@ const CategoryList = () => {
 const Category = ({item}) =>{
   
   return (
+    
     <li className='md:text-xl'>
-      {item}
+      <Link to={`/search/${item.toLowerCase()}`} className='hover:cursor-pointer hover:text-red-500'>{item}</Link>
     </li>
   )
 }

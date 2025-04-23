@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 const CatergoryBox = ({item}) => {
 
-
   return (
     <div className='text-center '>
       <Link to={`/search/${item.name}`}>

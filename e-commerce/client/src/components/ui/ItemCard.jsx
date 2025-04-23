@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RatingStars from "./RatingStars";
 import AddToCartButton from "./AddToCartButton";
+import { Link } from "react-router-dom";
 
 const ItemCard = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -16,11 +17,11 @@ const ItemCard = ({ product }) => {
       }}
     >
       <div className="w-64 shadow rounded relative">
-        <div>
+        <Link to={`/product/${product.id}`} className="hover:cursor-pointer">
           <img className="z-0" src={product.image} alt="" />
-        </div>
+        </Link>
         {isHovered && (
-          <div className="absolute bottom-0 w-full">
+          <div className="absolute bottom-0 w-full h-10">
             <AddToCartButton product={product} />
           </div>
         )}

@@ -5,8 +5,11 @@ import BrowseCategories from "./BrowseCategories/BrowseCategories";
 import BestSelling from "./bestSelling/BestSelling";
 import ExploreProducts from "./exploreProducts/ExploreProducts";
 import NewArrival from "./newArrival/NewArrival";
+import BottomInfo from "../../components/sections/BottomInfo";
 
 const HomePage = () => {
+
+  
   return (
     <div className="mx-10 lg:mx-25">
       <div className="md:flex w-full items-center justify-evenly">
@@ -23,6 +26,7 @@ const HomePage = () => {
 
       <ExploreProducts />
       <NewArrival />
+      <BottomInfo />
     </div>
   );
 };

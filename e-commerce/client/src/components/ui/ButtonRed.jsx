@@ -5,7 +5,7 @@ const ButtonRed = ({text, onClick=null}) => {
     <button
       onClick={onClick}
       type='button'
-     className='px-10 py-3  hover:cursor-pointer text-lg rounded-sm bg-red-600 text-white'>{text}</button>
+     className='px-13 py-3 hover:cursor-pointer text-lg rounded-sm bg-red-600 text-white'>{text}</button>
   )
 }
 
