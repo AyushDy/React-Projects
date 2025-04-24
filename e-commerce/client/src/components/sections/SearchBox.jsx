@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 
 const Searchbox = () => {
   const itemCount = useSelector((state) => state.cart.cartSize) || 0;
+  const wishlistCount = useSelector((state) => state.wishlist.wishlistSize) || 0;
   const navigate = useNavigate();
 
   const [searchItems, setSearchItems] = useState([]);
@@ -82,15 +83,27 @@ const Searchbox = () => {
           </div>
         )}
       </div>
+      <Link className="relative" to="/wishlist">
       <img src="/like.svg" alt="wishlist" className="w-5 h-5 cursor-pointer" />
+        {
+          wishlistCount > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-lg px-1 ">
+              {wishlistCount}
+            </span>
+          )
+        }
+      </Link>
       <Link className="relative" to="/cart">
         <img src="/cart.svg" alt="cart" className="w-5 h-5 cursor-pointer" />
-        <span className="absolute -top-2 -right-4 bg-red-500 text-white text-xs rounded-lg px-1 py-0.5">
+        {itemCount > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-lg px-1 ">
           {itemCount}
         </span>
+        )}
       </Link>
     </div>
   );
 };
+
 
 export default Searchbox;

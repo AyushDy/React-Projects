@@ -2,9 +2,15 @@ import { useState } from "react";
 import RatingStars from "./RatingStars";
 import AddToCartButton from "./AddToCartButton";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem , removeItem , selectWishlistItemById } from "../../features/wishlistSlice";
 
 const ItemCard = ({ product }) => {
+  const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
+  const wishlistItem = useSelector((state) =>
+    selectWishlistItemById(state, product.id) || null
+  );
 
   return (
     <div
@@ -20,6 +26,13 @@ const ItemCard = ({ product }) => {
         <Link to={`/product/${product.id}`} className="hover:cursor-pointer">
           <img className="z-0" src={product.image} alt="" />
         </Link>
+        <div className="absolute top-2 hover:cursor-pointer right-2 z-10 h-10 w-10 flex justify-items-center p-2 bg-white rounded-full opacity-50 hover:opacity-100 transition duration-300 ease-in-out">
+          <img
+          src={wishlistItem ? "/liked.svg" : "/like.svg"} 
+          alt="like-button"
+          onClick={() =>{wishlistItem ? dispatch(removeItem( { productId : product.id })) : dispatch(addItem({product}))}}
+           />
+        </div>
         {isHovered && (
           <div className="absolute bottom-0 w-full h-10">
             <AddToCartButton product={product} />

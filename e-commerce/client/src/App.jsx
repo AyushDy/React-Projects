@@ -9,6 +9,8 @@ import ProductDetailsPage from './pages/singleProductPage/productDetailsPage'
 import Productspage from './pages/productsPage/ProductsPage'
 import AboutPage from './pages/aboutPage/AboutPage'
 import ContactPage from './pages/contactPage/ContactPage'
+import WishlistPage from './pages/wishlistPage/WishlistPage'
+import NotFoundPage from './pages/notFoundPage/NotFoundPage'
 
 
 function App() {
@@ -38,9 +40,15 @@ function App() {
           <Route index element={<Productspage />} />
         </Route>
 
+        <Route path='/wishlist'>
+          <Route index element={<WishlistPage />} />
+        </Route>
+
         <Route path='/about' element={<AboutPage />} />
 
         <Route path='/contact' element={<ContactPage />} />
+
+        <Route path='*' element={<NotFoundPage />} />
         
       </Route>
     </Routes>

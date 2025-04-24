@@ -10,7 +10,7 @@ const AddToCartButton = ({product}) => {
 
 
   return (
-        <div className="h-10 z-10 text-white bg-black rounded flex justify-center">
+        <div className="h-full z-10 text-white bg-black rounded flex justify-center">
         {itemQuantity ? (
           <div className="flex justify-between w-full">
             <button
