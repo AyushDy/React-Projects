@@ -3,10 +3,10 @@ import Slider from "react-slick";
 
 const Carousel = () => {
   const images = [
-    "/caraousel/image-0.jpg",
-    "/caraousel/image-1.jpg",
-    "/caraousel/image-2.jpg",
-    "/caraousel/image-3.jpg",
+    "/caraousel/image0.jpg",
+    "/caraousel/image1.jpg",
+    "/caraousel/image2.jpg",
+    "/caraousel/image3.jpg",
   ];
 
   const settings = {
