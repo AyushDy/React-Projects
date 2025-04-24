@@ -9,6 +9,7 @@ const cartAdapter = createEntityAdapter({
   selectId: (item) => item.id,
 })
 
+
 const initialState = cartAdapter.getInitialState({
   cartSize: 0,
   cartSubtotal: 0,
@@ -42,8 +43,8 @@ const updateCart = (state) => {
 const cartSlice = createSlice({
   name: "cart",
   initialState : initialState,
-  reducers: {
-    addItem(state, action) {
+  reducers:{
+    addItem(state, action){
       const { id , price } = action.payload;
       const existingProduct = state.entities[id];
 
@@ -79,20 +80,40 @@ const cartSlice = createSlice({
       }
       updateCart(state);
     },
-    toggleSelection(state, action) {
+    toggleSelection(state, action){
       const productId = action.payload;
       const existingProduct = state.entities[productId];
       if(existingProduct){
         existingProduct.selected = !existingProduct.selected;
       }
       updateCart(state);
+    },
+    addMany : {
+      reducer(state, action){
+        const products = action.payload;
+        const newProducts = products.filter(item=>{
+          return state.entities[item.id] === undefined;
+        })
+        cartAdapter.addMany( state, newProducts);
+        updateCart(state);
+      },
+      prepare(products) {
+        return {
+          payload: products.map((product) => ({
+            id: product.id,
+            quantity: 1,
+            price: product.price,
+            selected: true,
+          })),
+        };
+      }
     }
   },
 });
 
 updateCart(initialState);
 
-export const { addItem , removeItem, clearCart , clearItem , toggleSelection } = cartSlice.actions
+export const { addItem , removeItem, clearCart , clearItem , toggleSelection, addMany } = cartSlice.actions
 
 export const {
   selectAll: selectAllCartItems,
