@@ -29,7 +29,7 @@ const AddToCartButton = ({product}) => {
           </div>
         ) : (
           <button
-            className=" hover:cursor-pointer rounded-lg w-full h-full active:bg-gray-600 transtition-active duration-300"
+            className=" hover:cursor-pointer rounded-lg p-2 w-full h-full active:bg-gray-600 transtition-active duration-300"
             onClick={() => dispatch(addItem({price: product.price, id: product.id}))}
           >
             Add To Cart

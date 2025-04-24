@@ -5,6 +5,7 @@ import RatingStars from "../../components/ui/RatingStars";
 import ColorChoose from "../../components/ui/ColorChoose";
 import AddToCartButton from "../../components/ui/AddToCartButton";
 import ButtonRed from "../../components/ui/ButtonRed";
+import LikeButton from "../../components/ui/LikeButton";
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
@@ -91,13 +92,13 @@ const ImagesDisplay = ({product}) => {
 
 const Buttons = ({ product }) => {
   return (
-    <div className="flex w-full  gap-5 my-5">
-      <div className="w-4/9">
+    <div className="flex w-full gap-5 my-5">
+      <div className="w-4/9 ">
       <AddToCartButton product={product} />
       </div>
       <ButtonRed text={"Buy Now"} />
-      <div className="rounded-md p-3 border-2 flex border-gray-500">
-        <img src="/like.svg" alt="wishlist" />
+      <div className="rounded-md h-15 p-3 w-15 flex border-2 border-gray-500">
+        <LikeButton product={product} />
       </div>
     </div>
   );
